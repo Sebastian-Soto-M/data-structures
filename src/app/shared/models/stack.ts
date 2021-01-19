@@ -1,45 +1,46 @@
-interface IStackNode<T> {
-  value: T | null;
-  next: IStackNode<T> | null;
-}
+import { IDataStructure, INode, NumberNode } from './data-structure';
 
-interface IStack<T> {
-  size: number;
-  top: StackNode<T> | null;
-  bottom: StackNode<T> | null;
-  push(val: T): number;
-  pop(): StackNode<T> | null;
-}
-
-export class StackNode<T> implements IStackNode<T> {
-  constructor(public value: T, public next = null) {}
+export interface IStack<T> extends IDataStructure<T> {
+  tail?: INode<T> | null;
+  push(item: T): void;
+  pop(): INode<T> | null;
 }
 
 export class Stack<T = number> implements IStack<T> {
-  constructor(public size = 0, public top = null, public bottom = null) {}
+  constructor(public size = 0, public head = null, public tail = null) {}
+
+  toArray(): T[] {
+    const arr = [];
+    let current = this.head;
+    while (current !== null) {
+      arr.push(current.value);
+      current = current.next;
+    }
+    return arr;
+  }
 
   push(val: T) {
-    const node = new StackNode(val);
+    const node = new NumberNode(val);
     if (this.size === 0) {
-      this.top = node;
-      this.bottom = node;
+      this.head = node;
+      this.tail = node;
     } else {
-      const currentTop = this.top;
-      this.top = node;
-      this.top.next = currentTop;
+      const currentTop = this.head;
+      this.head = node;
+      this.head.next = currentTop;
     }
 
     this.size += 1;
     return this.size;
   }
 
-  pop(): StackNode<T> | null {
+  pop(): INode<T> | null {
     if (this.size > 0) {
-      const nodeToBeRemove = this.top as StackNode<T>;
-      this.top = nodeToBeRemove.next;
+      const toRemove = this.head;
+      this.head = toRemove.next;
       this.size -= 1;
-      nodeToBeRemove.next = null;
-      return nodeToBeRemove;
+      toRemove.next = null;
+      return toRemove;
     }
     return null;
   }

@@ -1,0 +1,24 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Stack</mat-card-title>
+    <mat-card-subtitle>First in, last out</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-divider></mat-divider>
+    <mat-list fxFlex fxFlexOrder.lt-sm="1" fxFlexOrder="0">
+      <mat-list-item *ngFor="let item of stack; let last = last">
+        {{ item }}
+        <mat-divider *ngIf="!last"></mat-divider>
+      </mat-list-item>
+      <mat-list-item *ngIf="stack.length === 0">
+        There are no items here
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+  <mat-card-actions align="end" fxLayout="row" fxLayoutGap="16px">
+    <app-number-form (result)="ss.push($event)"></app-number-form>
+    <button mat-fab color="accent" (click)="ss.pop()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>
