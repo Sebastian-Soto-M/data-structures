@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { SharedModule } from 'app/shared/shared.module';
-import { OrderedListComponent } from './ordered-list/ordered-list.component';
 import { StackComponent } from './stack/stack.component';
 import { QueueComponent } from './queue/queue.component';
+import { OrderedListModule } from './ordered-list/ordered-list.module';
 
 @NgModule({
-  declarations: [HomeComponent, OrderedListComponent, StackComponent, QueueComponent],
-  imports: [CommonModule, SharedModule],
+  declarations: [HomeComponent, StackComponent, QueueComponent],
+  imports: [SharedModule, OrderedListModule],
   exports: [HomeComponent],
 })
 export class ViewsModule {}
