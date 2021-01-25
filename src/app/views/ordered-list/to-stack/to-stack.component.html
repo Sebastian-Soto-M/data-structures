@@ -1,12 +1,35 @@
 <mat-card>
   <mat-card-header>
     <mat-card-title>Stack</mat-card-title>
-    <mat-card-subtitle
-      >Select an item from this list and push it to the stack</mat-card-subtitle
-    >
+    <span class="spacer"></span>
+    <app-stack-amount color="accent"> </app-stack-amount>
   </mat-card-header>
-  <mat-card-content> </mat-card-content>
-  <mat-card-actions align="end">
-    <button mat-raised-button color="primary">Push</button>
-  </mat-card-actions>
+  <mat-card-content
+    fxLayout="row"
+    fxLayoutAlign=" space-around center"
+    fxLayoutGap="16px"
+  >
+    <mat-form-field appearance="outline" fxFlex>
+      <mat-label>Number</mat-label>
+      <input
+        type="text"
+        placeholder="Pick one"
+        aria-label="Number"
+        matInput
+        [formControl]="toMove"
+        [matAutocomplete]="auto"
+      />
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option
+          *ngFor="let option of filteredOptions | async"
+          [value]="option"
+        >
+          {{ option }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <button mat-fab color="primary" (click)="exchange()">
+      <mat-icon>content_cut</mat-icon>
+    </button>
+  </mat-card-content>
 </mat-card>

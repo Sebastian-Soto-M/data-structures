@@ -1,21 +1,34 @@
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>Queue</mat-card-title>
-    <mat-card-subtitle>First in, first out</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-    <mat-divider></mat-divider>
-    <mat-list fxFlex fxFlexOrder.lt-sm="1" fxFlexOrder="0">
-      <mat-list-item *ngFor="let item of list; let last = last">
-        {{ item }}
-        <mat-divider *ngIf="!last"></mat-divider>
-      </mat-list-item>
-      <mat-list-item *ngIf="list.length === 0">
-        There are no items here
-      </mat-list-item>
-    </mat-list>
-  </mat-card-content>
-  <mat-card-actions align="end">
-    <app-number-form (result)="ls.add($event)"></app-number-form>
-  </mat-card-actions>
-</mat-card>
+<div fxLayout="column" fxLayoutGap="16px">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Queue</mat-card-title>
+      <mat-card-subtitle>First in, first out</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-divider></mat-divider>
+      <mat-list fxFlex fxFlexOrder.lt-sm="1" fxFlexOrder="0">
+        <mat-list-item *ngFor="let item of list; let last = last">
+          {{ item }}
+          <mat-divider *ngIf="!last"></mat-divider>
+        </mat-list-item>
+        <mat-list-item *ngIf="list.length === 0">
+          There are no items here
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+    <mat-card-actions align="end" fxLayout="row" fxLayoutGap="16px">
+      <app-number-form (result)="qs.enqueue($event)"></app-number-form>
+      <button mat-fab color="warn" (click)="qs.dequeue()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  <div fxLayout="row" fxLayoutGap="16px">
+    <app-to-list-form
+      (actionEmitter)="refresh()"
+      [fromStructure]="qs.queue"
+      fxFlex
+    ></app-to-list-form>
+    <app-to-stack fxFlex></app-to-stack>
+  </div>
+</div>

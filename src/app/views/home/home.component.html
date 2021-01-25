@@ -1,10 +1,19 @@
-<div fxLayout="column" fxLayoutGap="16px">
-  <h1>Basic Data Structures</h1>
-  <mat-divider></mat-divider>
-  <app-ordered-list></app-ordered-list>
-  <mat-divider></mat-divider>
-  <app-stack></app-stack>
-  <mat-divider></mat-divider>
-  <app-queue></app-queue>
-  <mat-divider></mat-divider>
+<h1>Basic Data Structures</h1>
+<div
+  fxLayout="row"
+  fxLayout.lt-xl="column"
+  fxLayoutGap="16px"
+  fxLayoutGap.lt-xl="32px"
+>
+  <app-ordered-list fxFlex.xl="40"></app-ordered-list>
+  <div
+    fxLayout="row"
+    fxLayout.lt-md="column"
+    fxLayoutGap="16px"
+    fxLayoutGap.lt-md="32px"
+    fxFlex
+  >
+    <app-stack fxFlex></app-stack>
+    <app-queue fxFlex></app-queue>
+  </div>
 </div>

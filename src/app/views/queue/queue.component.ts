@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ListService } from '@core/services/list.service';
+import { QueueService } from '@core/services/queue.service';
 
 @Component({
   selector: 'app-queue',
@@ -9,11 +9,15 @@ import { ListService } from '@core/services/list.service';
 export class QueueComponent implements OnInit {
   list: number[] = [];
 
-  constructor(public ls: ListService) {}
+  constructor(public qs: QueueService) {}
 
   ngOnInit(): void {
-    this.ls.list$.subscribe((arr: number[]) => {
+    this.qs.queue$.subscribe((arr: number[]) => {
       this.list = arr;
     });
+  }
+
+  refresh(): void {
+    this.qs.refresh();
   }
 }

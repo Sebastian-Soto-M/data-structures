@@ -1,4 +1,5 @@
+@import "../../shared/variables";
 mat-card-content {
-  height: 30vh;
+  height: $mcc-height;
   overflow-y: scroll;
 }

@@ -1,0 +1,13 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Queue</mat-card-title>
+    <mat-card-subtitle>First in, first out</mat-card-subtitle>
+    <span class="spacer"></span>
+    <app-queue-amount color="accent"> </app-queue-amount>
+  </mat-card-header>
+  <mat-card-content fxLayout="row">
+    <button mat-raised-button color="primary" (click)="exchange()" fxFlex>
+      <mat-icon>content_cut</mat-icon> Send data
+    </button>
+  </mat-card-content>
+</mat-card>

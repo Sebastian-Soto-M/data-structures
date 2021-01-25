@@ -1,0 +1,13 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Stack</mat-card-title>
+    <mat-card-subtitle>First in, last out</mat-card-subtitle>
+    <span class="spacer"></span>
+    <app-stack-amount color="accent"> </app-stack-amount>
+  </mat-card-header>
+  <mat-card-content fxLayout="row">
+    <button mat-raised-button color="primary" (click)="exchange()" fxFlex>
+      <mat-icon>content_cut</mat-icon> Send data
+    </button>
+  </mat-card-content>
+</mat-card>

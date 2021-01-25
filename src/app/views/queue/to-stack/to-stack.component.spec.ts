@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FromQueueToStackComponent } from 'app/views/queue/to-stack/to-stack.component';
+import { FromQueueToStackComponent } from './to-stack.component';
 
 describe('ToStackComponent', () => {
   let component: FromQueueToStackComponent;

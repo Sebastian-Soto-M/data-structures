@@ -1,0 +1,13 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Ordered List</mat-card-title>
+    <mat-card-subtitle>Data is sorted when added</mat-card-subtitle>
+    <span class="spacer"></span>
+    <app-list-amount color="accent"> </app-list-amount>
+  </mat-card-header>
+  <mat-card-content fxLayout="row">
+    <button mat-raised-button color="primary" (click)="exchange()" fxFlex>
+      <mat-icon>content_cut</mat-icon> Send data
+    </button>
+  </mat-card-content>
+</mat-card>

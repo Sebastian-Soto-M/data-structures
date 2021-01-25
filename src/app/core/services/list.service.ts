@@ -1,29 +1,41 @@
 import { Injectable } from '@angular/core';
-import { INode } from '@models/data-structure';
-import { IOrderedList, OrderedList } from '@models/list';
+import { IMoveData } from '@models/data-structure.model';
+import { IList } from '@models/list/list.model';
+import { NumberOrderedList } from '@models/list/number-ordered-list.model';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ListService implements IOrderedList<number> {
-  private list = new OrderedList();
+export class ListService implements IList<number> {
+  list = new NumberOrderedList();
   list$ = new BehaviorSubject<number[]>([]);
 
   constructor() {}
 
+  getAt(index: number): number {
+    return this.list.getAt(index);
+  }
+
   add(item: number): void {
     this.list.add(item);
-    this.list$.next(this.list.toArray());
+    this.refresh();
   }
 
-  find(item: number): boolean {
-    return this.list.find(item);
+  indexOf(item: number): number {
+    return this.list.indexOf(item);
   }
 
-  removeAt(index: number): INode<number> {
-    const removed = this.list.removeAt(index);
+  removeAt(index: number): void {
+    this.list.removeAt(index);
+    this.refresh();
+  }
+
+  exchange(structure: IMoveData<number>, value: number): void {
+    this.list.sendToDataStructure(structure, value);
+  }
+
+  refresh(): void {
     this.list$.next(this.list.toArray());
-    return removed;
   }
 }

@@ -16,4 +16,8 @@ export class StackComponent implements OnInit {
       this.stack = arr;
     });
   }
+
+  refresh(): void {
+    this.ss.refresh();
+  }
 }
