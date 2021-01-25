@@ -2,6 +2,8 @@
 
 ## Important
 
+You must have node installed, run `npm install` and then `npm start`
+
 Data Structures used:
 
 1. Ordered List
@@ -12,7 +14,7 @@ Models are found in **src/app/shared/models**
 
 ### Class Diagram
 
-![Class Diagram] (src/assets/classDiagram.jpg)
+![Class Diagram](src/assets/classDiagram.jpg)
 
 ## Angular Guide
 
