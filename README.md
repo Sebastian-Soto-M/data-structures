@@ -14,7 +14,7 @@ Models are found in **src/app/shared/models**
 
 ### Class Diagram
 
-![Class Diagram](src/assets/classDiagram.jpg)
+![Class Diagram](./src/assets/classDiagram.jpg)
 
 ## Angular Guide
 
